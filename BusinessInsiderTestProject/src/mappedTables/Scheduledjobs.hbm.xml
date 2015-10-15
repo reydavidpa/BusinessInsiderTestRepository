@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Aug 31, 2015 10:52:13 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="hibernate.mappedTables.Scheduledjobs" table="scheduledjobs" catalog="newseleniumwowmatrix">
+        <id name="schedulejobid" type="java.lang.Integer">
+            <column name="schedulejobid" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="selwowscheduler" class="hibernate.mappedTables.Selwowscheduler" fetch="select">
+            <column name="schedulerid" />
+        </many-to-one>
+        <property name="jobdescriptionkey" type="string">
+            <column name="jobdescriptionkey" length="400" />
+        </property>
+        <property name="triggerkey" type="string">
+            <column name="triggerkey" length="400" />
+        </property>
+        <property name="jobstatusid" type="int">
+            <column name="jobstatusid" not-null="true" />
+        </property>
+        <property name="goodToGo" type="java.lang.Integer">
+            <column name="goodToGo" />
+        </property>
+        <property name="isSingle" type="java.lang.Integer">
+            <column name="isSingle" />
+        </property>
+        <property name="port" type="int">
+            <column name="Port" not-null="true" />
+        </property>
+        <property name="processId" type="int">
+            <column name="ProcessID" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

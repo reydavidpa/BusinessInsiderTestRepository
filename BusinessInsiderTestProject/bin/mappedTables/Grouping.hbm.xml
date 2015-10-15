@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Aug 31, 2015 10:52:13 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="hibernate.mappedTables.Grouping" table="grouping" catalog="newseleniumwowmatrix">
+        <id name="groupid" type="java.lang.Integer">
+            <column name="groupid" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="suite" class="hibernate.mappedTables.Suite" fetch="select">
+            <column name="suiteid" not-null="true" />
+        </many-to-one>
+        <property name="groupname" type="string">
+            <column name="groupname" length="50" not-null="true" />
+        </property>
+        <property name="groupprefix" type="string">
+            <column name="groupprefix" length="200" />
+        </property>
+        <property name="criticalgroup" type="java.lang.Integer">
+            <column name="criticalgroup" />
+        </property>
+        <property name="haspassed" type="java.lang.Integer">
+            <column name="haspassed" />
+        </property>
+        <set name="selwowschedulers" table="selwowscheduler" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="groupid" not-null="true" />
+            </key>
+            <one-to-many class="hibernate.mappedTables.Selwowscheduler" />
+        </set>
+        <set name="testcases" table="testcase" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="groupid" not-null="true" />
+            </key>
+            <one-to-many class="hibernate.mappedTables.Testcase" />
+        </set>
+    </class>
+</hibernate-mapping>

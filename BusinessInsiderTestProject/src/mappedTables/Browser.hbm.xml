@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Aug 31, 2015 10:52:13 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="hibernate.mappedTables.Browser" table="browser" catalog="newseleniumwowmatrix">
+        <id name="browserid" type="java.lang.Integer">
+            <column name="browserid" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="server" class="hibernate.mappedTables.Server" fetch="select">
+            <column name="serverid" />
+        </many-to-one>
+        <property name="browsername" type="string">
+            <column name="browsername" length="50" not-null="true" />
+        </property>
+        <property name="browserpath" type="string">
+            <column name="browserpath" length="200" />
+        </property>
+        <set name="selwowschedulers" table="selwowscheduler" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="browserid" not-null="true" />
+            </key>
+            <one-to-many class="hibernate.mappedTables.Selwowscheduler" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Aug 31, 2015 10:52:13 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="hibernate.mappedTables.BuildResults" table="buildResults" catalog="newseleniumwowmatrix">
+        <id name="buildresultid" type="java.lang.Integer">
+            <column name="buildresultid" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="suite" class="hibernate.mappedTables.Suite" fetch="select">
+            <column name="suiteid" not-null="true" />
+        </many-to-one>
+        <property name="buildresult" type="string">
+            <column name="buildresult" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

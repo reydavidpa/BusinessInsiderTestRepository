@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Aug 31, 2015 10:52:13 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="hibernate.mappedTables.Suite" table="suite" catalog="newseleniumwowmatrix">
+        <id name="suiteid" type="java.lang.Integer">
+            <column name="suiteid" />
+            <generator class="identity" />
+        </id>
+        <property name="suitename" type="string">
+            <column name="suitename" length="50" not-null="true" />
+        </property>
+        <property name="suitefilepath" type="string">
+            <column name="suitefilepath" length="200" />
+        </property>
+        <set name="buildResultses" table="buildResults" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="suiteid" not-null="true" />
+            </key>
+            <one-to-many class="hibernate.mappedTables.BuildResults" />
+        </set>
+        <set name="selwowschedulers" table="selwowscheduler" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="suiteid" not-null="true" />
+            </key>
+            <one-to-many class="hibernate.mappedTables.Selwowscheduler" />
+        </set>
+        <set name="groupings" table="grouping" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="suiteid" not-null="true" />
+            </key>
+            <one-to-many class="hibernate.mappedTables.Grouping" />
+        </set>
+    </class>
+</hibernate-mapping>
