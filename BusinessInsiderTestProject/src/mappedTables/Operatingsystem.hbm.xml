@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Aug 31, 2015 10:52:13 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="hibernate.mappedTables.Operatingsystem" table="operatingsystem" catalog="newseleniumwowmatrix">
+        <id name="osid" type="java.lang.Integer">
+            <column name="osid" />
+            <generator class="identity" />
+        </id>
+        <property name="osname" type="string">
+            <column name="osname" length="100" not-null="true" />
+        </property>
+        <set name="servers" table="server" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="serveros" not-null="true" />
+            </key>
+            <one-to-many class="hibernate.mappedTables.Server" />
+        </set>
+    </class>
+</hibernate-mapping>

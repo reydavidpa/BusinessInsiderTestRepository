@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Aug 31, 2015 10:52:13 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="hibernate.mappedTables.Testcase" table="testcase" catalog="newseleniumwowmatrix">
+        <id name="testcaseid" type="java.lang.Integer">
+            <column name="testcaseid" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="grouping" class="hibernate.mappedTables.Grouping" fetch="select">
+            <column name="groupid" not-null="true" />
+        </many-to-one>
+        <property name="testcasename" type="string">
+            <column name="testcasename" length="100" not-null="true" />
+        </property>
+        <property name="testcasedescription" type="string">
+            <column name="testcasedescription" length="400" />
+        </property>
+        <property name="tfsid" type="int">
+            <column name="tfsid" not-null="true" unique="true" />
+        </property>
+        <property name="status" type="int">
+            <column name="status" not-null="true" />
+        </property>
+        <set name="testcaseresultses" table="testcaseresults" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="testcaseid" not-null="true" />
+            </key>
+            <one-to-many class="hibernate.mappedTables.Testcaseresults" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Aug 31, 2015 10:52:13 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="hibernate.mappedTables.Server" table="server" catalog="newseleniumwowmatrix">
+        <id name="serverid" type="java.lang.Integer">
+            <column name="serverid" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="operatingsystem" class="hibernate.mappedTables.Operatingsystem" fetch="select">
+            <column name="serveros" not-null="true" />
+        </many-to-one>
+        <property name="servername" type="string">
+            <column name="servername" length="100" not-null="true" />
+        </property>
+        <property name="serverip" type="string">
+            <column name="serverip" length="50" not-null="true" />
+        </property>
+        <property name="serverport" type="int">
+            <column name="serverport" not-null="true" />
+        </property>
+        <property name="isSelwowschedulerServer" type="int">
+            <column name="isSelwowschedulerServer" not-null="true" />
+        </property>
+        <property name="session" type="int">
+            <column name="session" not-null="true" />
+        </property>
+        <set name="selwowschedulers" table="selwowscheduler" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="serverid" not-null="true" />
+            </key>
+            <one-to-many class="hibernate.mappedTables.Selwowscheduler" />
+        </set>
+        <set name="batchfilepaths" table="batchfilepath" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="serverid" not-null="true" />
+            </key>
+            <one-to-many class="hibernate.mappedTables.Batchfilepath" />
+        </set>
+        <set name="xmlfilepaths" table="xmlfilepath" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="serverid" not-null="true" unique="true" />
+            </key>
+            <one-to-many class="hibernate.mappedTables.Xmlfilepath" />
+        </set>
+        <set name="browsers" table="browser" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="serverid" />
+            </key>
+            <one-to-many class="hibernate.mappedTables.Browser" />
+        </set>
+    </class>
+</hibernate-mapping>

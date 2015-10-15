@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Aug 31, 2015 10:52:13 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="hibernate.mappedTables.Selwowscheduler" table="selwowscheduler" catalog="newseleniumwowmatrix">
+        <id name="schedulerid" type="java.lang.Integer">
+            <column name="schedulerid" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="server" class="hibernate.mappedTables.Server" fetch="select">
+            <column name="serverid" not-null="true" />
+        </many-to-one>
+        <many-to-one name="grouping" class="hibernate.mappedTables.Grouping" fetch="select">
+            <column name="groupid" not-null="true" />
+        </many-to-one>
+        <many-to-one name="xmlfile" class="hibernate.mappedTables.Xmlfile" fetch="select">
+            <column name="xmlfileid" not-null="true" />
+        </many-to-one>
+        <many-to-one name="environment" class="hibernate.mappedTables.Environment" fetch="select">
+            <column name="environmentid" not-null="true" />
+        </many-to-one>
+        <many-to-one name="suite" class="hibernate.mappedTables.Suite" fetch="select">
+            <column name="suiteid" not-null="true" />
+        </many-to-one>
+        <many-to-one name="schedulersource" class="hibernate.mappedTables.Schedulersource" fetch="select">
+            <column name="schedulersourceid" not-null="true" />
+        </many-to-one>
+        <many-to-one name="selwowusers" class="hibernate.mappedTables.Selwowusers" fetch="select">
+            <column name="userid" not-null="true" />
+        </many-to-one>
+        <many-to-one name="outputfile" class="hibernate.mappedTables.Outputfile" fetch="select">
+            <column name="outputfileid" />
+        </many-to-one>
+        <many-to-one name="browser" class="hibernate.mappedTables.Browser" fetch="select">
+            <column name="browserid" not-null="true" />
+        </many-to-one>
+        <property name="scheduleddate" type="timestamp">
+            <column name="scheduleddate" length="19" not-null="true" />
+        </property>
+        <set name="testcaseresultses" table="testcaseresults" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="schedulerid" not-null="true" />
+            </key>
+            <one-to-many class="hibernate.mappedTables.Testcaseresults" />
+        </set>
+        <set name="scheduledjobses" table="scheduledjobs" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="schedulerid" />
+            </key>
+            <one-to-many class="hibernate.mappedTables.Scheduledjobs" />
+        </set>
+    </class>
+</hibernate-mapping>

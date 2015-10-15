@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Aug 31, 2015 10:52:13 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="hibernate.mappedTables.Errorsfile" table="errorsfile" catalog="newseleniumwowmatrix">
+        <id name="errorfileid" type="java.lang.Integer">
+            <column name="errorfileid" />
+            <generator class="identity" />
+        </id>
+        <property name="errorfile" type="string">
+            <column name="errorfile" />
+        </property>
+    </class>
+</hibernate-mapping>

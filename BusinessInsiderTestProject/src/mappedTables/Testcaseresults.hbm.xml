@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Aug 31, 2015 10:52:13 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="hibernate.mappedTables.Testcaseresults" table="testcaseresults" catalog="newseleniumwowmatrix">
+        <id name="testcaseresultsid" type="java.lang.Integer">
+            <column name="testcaseresultsid" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="testcase" class="hibernate.mappedTables.Testcase" fetch="select">
+            <column name="testcaseid" not-null="true" />
+        </many-to-one>
+        <many-to-one name="selwowscheduler" class="hibernate.mappedTables.Selwowscheduler" fetch="select">
+            <column name="schedulerid" not-null="true" />
+        </many-to-one>
+        <property name="starttime" type="timestamp">
+            <column name="starttime" length="19" not-null="true" />
+        </property>
+        <property name="endtime" type="timestamp">
+            <column name="endtime" length="19" />
+        </property>
+        <property name="results" type="string">
+            <column name="results" />
+        </property>
+        <property name="passed" type="java.lang.Integer">
+            <column name="passed" />
+        </property>
+        <property name="errors" type="string">
+            <column name="errors" />
+        </property>
+    </class>
+</hibernate-mapping>
